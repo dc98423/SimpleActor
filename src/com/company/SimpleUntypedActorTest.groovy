@@ -12,10 +12,14 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
          @Rule
          public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
 
+
+
+         private ActorSystem system = ActorSystem.create("sample1");
+         private ActorRef simpleUntypedActor = system.actorOf(Props.apply(SimpleUntypedActor::new), "SimpleActor");
+
          @Test
          void testOnReceiveInteger() {
-             ActorSystem system = ActorSystem.create("sample1");
-             ActorRef simpleUntypedActor = system.actorOf(Props.apply(SimpleUntypedActor::new), "SimpleActor");
+
              //message when actor receives integer
              simpleUntypedActor.tell(1);
              //if actor receives the string Jim
@@ -25,8 +29,7 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
          }
          @Test
          void testOnReceiveJim() {
-             ActorSystem system = ActorSystem.create("sample1");
-             ActorRef simpleUntypedActor = system.actorOf(Props.apply(SimpleUntypedActor::new), "SimpleActor");
+
              //message when actor receives integer
              simpleUntypedActor.tell("Jim");
              //if actor receives the string Jim
@@ -36,13 +39,11 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
 
          @Test
          void testOnReceiveAllOtherObjects() {
-         }
 
-         ActorSystem system = ActorSystem.create("sample1");
-         ActorRef simpleUntypedActor = system.actorOf(Props.apply(SimpleUntypedActor::new), "SimpleActor");
-         //message when actor receives integer
-         simpleUntypedActor.tell(true);
-         //if actor receives the string Jim
-         assertEquals("This example is too simple for more exceptions.", systemOutRule.getLog());
+             //message when actor receives integer
+             simpleUntypedActor.tell(true);
+             //if actor receives the string Jim
+             assertEquals("This example is too simple for more exceptions.", systemOutRule.getLog());
+         }
      }
  }
