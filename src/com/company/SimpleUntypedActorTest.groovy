@@ -11,9 +11,7 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
      {
          @Rule
          public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
-
-
-
+      
          private ActorSystem system = ActorSystem.create("sample1");
          private ActorRef simpleUntypedActor = system.actorOf(Props.apply(SimpleUntypedActor::new), "SimpleActor");
 
