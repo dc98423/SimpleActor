@@ -16,6 +16,6 @@ public class Main {
         //if actor receives the string Jim
         simpleUntypedActor.tell("Jim");
         //if actor receives any other object
-        simpleUntypedActor.tell(1);
+        simpleUntypedActor.tell(true);
     }
 }
