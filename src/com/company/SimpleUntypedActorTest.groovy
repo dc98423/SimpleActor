@@ -1,5 +1,4 @@
 package com.company
-
 import akka.actor.ActorRef
 import akka.actor.ActorSystem
 import akka.actor.Props
@@ -22,8 +21,6 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
              simpleUntypedActor.tell(1);
              //if actor receives the string Jim
              assertEquals("This is an integer that equals: 1", systemOutRule.getLog());
-
-
          }
          @Test
          void testOnReceiveJim() {
@@ -32,7 +29,6 @@ import org.junit.contrib.java.lang.system.SystemOutRule;
              simpleUntypedActor.tell("Jim");
              //if actor receives the string Jim
              assertEquals("Hello Jim!", systemOutRule.getLog());
-
          }
 
          @Test
